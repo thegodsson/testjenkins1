@@ -13,7 +13,7 @@ pipeline {
     stage('TEST2') {
       steps {
         container('docker') {  
-          sh "docker pull nginx"
+          sh "kubectl get all"
         }
       }
     }
