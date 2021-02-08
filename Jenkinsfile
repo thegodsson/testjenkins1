@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {  // TEST 1
-        sh "echo Bonjour"   
+        echo "Bonjour"   
       }
     }
     stage('TEST2') {
