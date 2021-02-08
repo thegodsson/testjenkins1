@@ -7,13 +7,13 @@ pipeline {
   stages {
     stage('Build') {
       steps {  // TEST 1
-        sh "kubectl get all -n jenkins"   
+        sh "echo Bonjour"   
       }
     }
     stage('TEST2') {
       steps {
         container('docker') {  
-          sh "echo FIN"
+          sh "docker ps"
         }
       }
     }
