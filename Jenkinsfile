@@ -1,21 +1,10 @@
 pipeline {
-  agent {
-    kubernetes {
-      
-    }
-  }
-  stages {
-    stage('Build') {
-      steps {  // TEST 1
-        echo "Bonjour"   
-      }
-    }
-    stage('TEST2') {
-      steps {
-        container('docker') {  
-          sh "kubectl get all -n jenkins"
+    agent { docker { image 'node:14-alpine' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'npm --version'
+            }
         }
-      }
     }
-  }
 }
