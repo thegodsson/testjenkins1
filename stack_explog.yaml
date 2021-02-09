@@ -27,8 +27,8 @@ spec:
         securityContext:
           privileged: true
         command: ["/usr/sbin/init", "-c"]
-      imagePullSecrets:
-      - name: myregistry
+      #imagePullSecrets:
+      #- name: myregistry
 
 ---
 
