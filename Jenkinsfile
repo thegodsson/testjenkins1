@@ -1,26 +1,23 @@
 pipeline {
-  agent {
-    kubernetes {
-      
-    }
-    
-    tools {
-      docker 'docker'
-  }
-  }
+
+  agent { label 'kubepod' }
+
   stages {
-    stage('Build') {
-      steps {  // no container directive is needed as the maven container is the default
-        sh "docker pull nginx"   
+
+    stage('Checkout Source') {
+      steps {
+        git url:'https://github.com/justmeandopensource/playjenkins.git', branch:'test-deploy-stage'
       }
     }
-    stage('Build Docker Image') {
+
+    stage('Deploy App') {
       steps {
-        container('docker') {  
-          sh "echo Fin"
-          sh "echo FIN 2"
+        script {
+          kubernetesDeploy(configs: "nginx.yaml", kubeconfigId: "mykubeconfig")
         }
       }
     }
+
   }
+
 }
