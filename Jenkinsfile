@@ -3,6 +3,10 @@ pipeline {
     kubernetes {
       
     }
+    
+    tools {
+      docker 'docker'
+  }
   }
   stages {
     stage('Build') {
