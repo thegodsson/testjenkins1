@@ -49,20 +49,3 @@ spec:
   externalIPs:
     - 192.168.6.121
 
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: explog-web-tls
-  namespace: dev
-spec:
-  entryPoints:
-    - websecure
-  routes:
-  - kind: Rule
-    match: Host(`lamp.david.local`) && PathPrefix(`/`)
-    services:
-    - name: explog-dev-service
-      port: 8082
-  tls:
-    certResolver: le
